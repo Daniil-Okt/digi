@@ -1,0 +1,49 @@
+// !TO PERCENT %:
+@function prc($pxOne, $pxTwo) {
+  $result: math.div($pxOne, $pxTwo) * 100%;
+  @return $result;
+}
+
+// !TO REM:
+@function rem($px) {
+  $result: math.div($px, 16) + rem;
+  @return $result;
+}
+
+// !TO EM:
+@function em($px) {
+  $result: math.div($px, 16) + em;
+  @return $result;
+}
+
+
+// !TO VW:
+@function vw($value, $designWidth: 1920) {
+  @return math.div($value, $designWidth) * 100vw;
+}
+
+$desktop-width: 1920;
+
+$tablet-width: 768;
+
+$mobile-width: 360;
+
+@mixin responsive($property, $value-desktop, $value-tablet, $value-mobile: 0) {
+  // Desktop (default)
+  #{$property}: #{vw($value-desktop, $desktop-width)};
+
+  // Tablet
+  @media (max-width: 1024px) {
+    #{$property}: #{vw($value-tablet, $tablet-width)};
+  }
+
+  // Mobile
+  @media (max-width: 480px) {
+    #{$property}: #{vw($value-mobile, $mobile-width)};
+  }
+}
+
+.example-element {
+  @include responsive(width, 1440, 756, 390);
+  @include responsive(font-size, 24, 20, 16);
+}

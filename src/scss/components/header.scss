@@ -1,0 +1,264 @@
+.header {
+  position: relative;
+  width: 100%;
+  transition: background-color var(--bs-transition);
+  z-index: 100;
+  @include responsive(height, 180, 188, 88);
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+    picture, img {
+      width: 100%;
+    }
+  }
+
+  &__container {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include responsive(height, 100, 100, 48);
+  }
+
+
+
+		&__container {
+      @include responsive(padding-left, 80, 80, 32);
+      @include responsive(padding-right, 80, 80, 32);
+		}
+
+		&__logo {
+      position: relative;
+      z-index: 1;
+      @include responsive(width, 264, 264, 120);
+      @include responsive(margin-top, -15, -13, -7);
+      img {
+        width: 100%;
+      }
+		}
+
+		&__menu {
+		}
+
+    &__social {
+      display: flex;
+      position: relative;
+      z-index: 1;
+    }
+
+    &__social-link {
+      @include responsive(width, 76, 76, 39);
+      position: relative;
+      cursor: pointer;
+      &:not(:last-child) {
+        @include responsive(margin-right, -3, -3, -1);
+      }
+      .one {
+        transition: all 0.3s ease-in-out  0s;
+        width: 100%;
+      }
+      .two {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transition: all 0.3s ease-in-out  0s;
+        opacity: 0;
+      }
+      &:hover {
+        .one {
+          opacity: 0;
+        }
+        .two {
+          opacity: 1;
+        }
+      }
+    }
+
+    
+}
+
+.button-menu {
+  @media(min-width:1025px){
+    display: none;
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  @include responsive(width, 252, 252, 124); 
+  @include responsive(height, 44, 44, 16);
+  @include responsive(bottom, 51, 51, 24);
+  
+  left: 50%;
+  transform: translateX(-50%);
+ 
+  &:active {
+    .button-menu__bg {
+      transform: scale(0.95);
+    }
+    span {
+      transform: scale(0.95);
+    }
+  }
+	&__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease  0s;
+    img {
+      width: 100%;
+
+    }
+	}
+
+  span {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    font-family: var(--second-family);
+    font-weight: 500;
+    @include responsive(font-size, 24, 24, 14);
+    line-height: 120%;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--bodi-1);
+    text-shadow: 0 0 3px #2602ff;
+    transition: all 0.3s ease  0s;
+    margin-top: vw(-2, 768);
+    @media(max-width:480px){
+        margin-top: vw(-3, 360);
+    }
+  }
+  span.close {
+    display: none;
+  }
+
+}
+
+.menu-open .button-menu {
+  span.close {
+    display: block;
+  }
+  span.open {
+    display: none;
+  }
+} 
+
+
+.menu {
+    position: relative;
+    z-index: 1;
+    @media(max-width:1024px){
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: -150%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      @include responsive(padding-top, 180, 188, 88);
+      @include responsive(padding-bottom, 180, 188, 88);
+      background-color: #220736;
+      transition: all 0.5s ease-in-out  0s;
+      opacity: 0;
+      .menu-open & {
+        top: 0;
+        opacity: 1;
+      }
+    }
+		&__list {
+      display: flex;
+      @include responsive(gap, 36, 20, 20);
+
+      @media(max-width:1024px){
+        flex-direction: column;
+        align-items: center;
+    }
+		}
+
+		&__item {
+		}
+
+		&__link {
+      font-family: var(--second-family);
+      font-weight: 400;
+      @include responsive(font-size, 24, 20, 16);
+      line-height: 120%;
+      text-transform: uppercase;
+      color: var(--bodi-1);
+      text-shadow: 0 0 3px #2602ff;
+      transition: all 0.3s ease  0s;
+      cursor: pointer;
+      &:hover {
+        color: var(--bodi-2);
+        text-shadow: 0 0 3px #ff029a;
+      }
+		}
+}
+
+// Burger
+/*
+.icon-menu {
+  display: none;
+
+  @include media-mx(768) {
+    display: block;
+    position: relative;
+    width: rem(30);
+    height: rem(18);
+    cursor: pointer;
+    z-index: 5;
+
+    span,
+    &::before,
+    &::after {
+      content: "";
+      transition: all 300ms ease 0ms;
+      right: 0;
+      position: absolute;
+      width: 100%;
+      height: rem(2);
+      background-color: #000;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+
+    span {
+      top: calc(50% - rem(1));
+    }
+
+    .menu-open & {
+      span {
+        width: 0;
+      }
+
+      &::before {
+        top: calc(50% - rem(1));
+        transform: rotate(-45deg);
+      }
+
+      &::after {
+        bottom: calc(50% - rem(1));
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+*/

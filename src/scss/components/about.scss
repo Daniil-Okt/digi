@@ -1,14 +1,18 @@
 .about {
     position: relative;
     @include responsive(margin-top, -180, -188, -88);
-    @include responsive(padding-top, 226, 226, 110);
-
+    @include responsive(padding-top, 226, 243, 110);
+    @include responsive(min-height, 1268, 1128, 496);
+    display: flex;
     &__bg {
     }
 
     &__container {
         position: relative;
         z-index: 1;
+        height: auto;
+        flex: auto;
+        width: 100%;
     }
 
 
@@ -52,6 +56,168 @@
             max-width: 100%;
         }
     }
+
+    &__button.button {
+        @include responsive(height, 100, 100, 44);
+        margin-top: vw(100);
+        &:hover {
+            transform: scale(1);
+        }
+        .button__decor-bg {
+            // @include responsive(height, 126, 106, 44);
+        }   
+        span {
+            @include responsive(font-size, 32, 32, 16);
+        }
+
+        &::after,  &::before {
+            @include responsive(height, 100, 100, 44);
+            clip-path: polygon(
+                0% 0%,                            /* (0px, 0px) */
+                92.18% 0%,                        /* (519px, 0px) */
+                100% 44%,                         /* (563px, 44px) */
+                100% 100%,                        /* (563px, 100px) */
+                7.99% 100%,                       /* (45px, 100px) */
+                0% 56%                            /* (0px, 56px) */
+            );
+        }
+
+        @media(max-width:1024px){
+            position: absolute;
+            z-index: 6;
+            left: 0;
+            @include responsive(bottom, 144, 110, 51);
+            width: 100%;
+
+            .button__decor-bg {
+                display: none;
+            }
+            .button__bg {
+                width: 100%;
+            }
+
+            .button__decor._1 {
+                transform: rotate(90deg);
+                bottom: auto;
+                top: 0;
+            }
+
+            &::after, &::before {
+                width: 100%;
+                
+                clip-path: polygon(
+                    0% 44%,   /* Нижний левый угол */
+                    5.74% 0%, /* Верхний левый угол: 44/767*100% по ширине */
+                    94.27% 0%, /* Верхний правый угол: 723/767*100% по ширине */
+                    100% 44%,  /* Переход в правой части фигуры */
+                    100% 100%, /* Нижний правый угол */
+                    0% 100%    /* Нижний левый угол */
+                );
+            }
+            .web {
+                display: none;
+            }
+            .tab {
+                display: block;
+            }
+        }
+
+
+        @media(max-width:480px){
+            &::after, &::before {
+                clip-path: polygon(
+                    4.44% 0%,
+                    95.56% 0%,
+                    100% 36.36%,
+                    100% 100%,
+                    0% 100%,
+                    0% 36.36%
+                );
+            }
+
+            .tab {
+                display: none;
+            }
+            .mob {
+                display: block;
+            }
+        }
+    }
 }
 
+.about-img {
+    position: absolute;
+    right: 0;
+    @include responsive(bottom, 144, 113, 52);
+    z-index: 3;
+    @include responsive(width, 1046, 646, 328);
+    @include responsive(height, 986, 683, 333);
+    picture, img {
+        width: 100%;
+    }
+
+    @media(max-width:1024px){
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    @keyframes flicker {
+        0% {
+            opacity: 0.2;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    
+    &__light-one {
+        position: absolute;
+        @include responsive(width, 862, 576, 256);
+        @include responsive(height, 360, 240, 120);
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        filter: blur(60px);
+        background: linear-gradient(180deg, rgba(128, 92, 255, 0) 0%, #805cff 100%);
+        mix-blend-mode: lighten;
+        opacity: 0.2;
+        // animation: flicker 0.1s infinite 5s;
+    
+        @media(max-width:1024px){
+            right: 50%;
+            transform: translateX(50%);
+        }
+    }
+    
+    &__light-two {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        @include responsive(width, 861, 576, 256);
+        @include responsive(height, 986, 669, 340);
+        filter: blur(60px);
+        background: linear-gradient(180deg, rgba(246, 33, 238, 0) 0%, #f621ee 100%);
+        opacity: 0.1;
+        // animation: flicker 3s infinite steps(10) alternate;
+    
+        @media(max-width:1024px){
+            right: 50%;
+            transform: translateX(50%);
+        }
+    }
+    
+    &__glitch {
+        background-image: url('@img/about/about-img.png');
+        @media(max-width:1024px){
+            background-image: url('@img/about/about-img-table.png');
+        }
+        @media(max-width:480px){
+            background-image: url('@img/about/about-img-mob.png');
+        }
+    }
+
+
+
+}
 

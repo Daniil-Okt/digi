@@ -179,3 +179,57 @@ new BurgerMenu().init();
 
 
 
+
+
+// function startFlickering(element, opacityEnd) {
+//     // Функция, которая изменяет прозрачность элемента
+//     function flicker() {
+//         const randomOpacity = Math.random() * opacityEnd; // Прозрачность от 0.2 до 1.0
+//         const randomDelay = Math.random() * 3000 + 1000; // Задержка от 200ms до 700ms
+
+//         element.style.opacity = randomOpacity;
+
+//         // Задаем следующий вызов функции flicker через случайное время
+//         setTimeout(flicker, randomDelay);
+//     }
+
+//     flicker(); // Запускаем мигание
+// }
+
+// // Стартуем мигание для каждого элемента с классом 'light'
+// // document.querySelectorAll('.light').forEach(light => startFlickering(light, 02));
+// const aboutImgLightOne = document.querySelector('.about-img__light-one')
+// if (aboutImgLightOne) {
+// 	startFlickering(aboutImgLightOne, 0.1)
+// }
+// const aboutImgLightTwo = document.querySelector('.about-img__light-two')
+// if (aboutImgLightTwo) {
+// 	startFlickering(aboutImgLightTwo, 0.2)
+// }
+
+function startRandomHiding(element) {
+    // Сохраняем изначальное значение прозрачности
+    const originalOpacity = window.getComputedStyle(element).opacity;
+
+    // Функция, которая временно убирает элемент, задавая ему прозрачность 0
+    function hideTemporarily() {
+        const randomDelay = Math.random() * 3000 + 2000; // Задержка от 1000ms до 3000ms (1сек до 3сек)
+        const hideDuration = Math.random() * 150 + 50;  // Время скрытия от 100ms до 600ms
+
+        // Устанавливаем прозрачность в 0
+        element.style.opacity = 0;
+
+        // Возвращаем прозрачность к оригиналу после времени скрытия
+        setTimeout(() => {
+            element.style.opacity = originalOpacity;
+
+            // Повторяем процесс через случайную задержку
+            setTimeout(hideTemporarily, randomDelay);
+        }, hideDuration);
+    }
+
+    hideTemporarily(); // Запускаем скрытие
+}
+
+// Стартуем процесс для каждого элемента с классом 'light'
+document.querySelectorAll('.light').forEach(light => startRandomHiding(light));

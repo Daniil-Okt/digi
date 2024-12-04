@@ -27,3 +27,30 @@
     transform: rotate(359deg);
   }
 }
+
+@keyframes gradientShift {
+            
+  0% {
+     filter: hue-rotate(0deg);
+     opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  25% {
+      filter: hue-rotate(30deg);
+      opacity: 0.5;
+  }
+  50% {
+      filter: hue-rotate(20deg);
+      opacity: 1;
+  }
+  75% {
+      filter: hue-rotate(20deg);
+      opacity: 0.7;
+  }
+  100% {
+      filter: hue-rotate(0deg);
+  }
+
+}

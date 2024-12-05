@@ -22,7 +22,7 @@
 * Библиотеки
 * раскомментировать для использования
 */
-// @import 'libs/aos';
+@import 'libs/aos';
 // @import 'libs/swiper';
 
 /**
@@ -52,5 +52,6 @@
 */
 @import 'components/header';
 @import 'components/about';
+@import 'components/start';
 
 @import 'components/footer';

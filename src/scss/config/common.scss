@@ -37,8 +37,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    -webkit-animation-duration:2s;
-    animation-duration:2s;
+    -webkit-animation-duration:10s;
+    animation-duration:10s;
     -webkit-animation-timing-function:linear;
     animation-timing-function:linear;
     -webkit-animation-iteration-count:infinite;
@@ -49,48 +49,112 @@ body {
     animation-direction:alternate
 }
 
- @keyframes glitch-anim {
-    /* Дублируем ту же анимацию, что и выше */
+@keyframes glitch-anim {
     0% {
-     opacity: 1;
-     transform: translateZ(0);
-     clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+        opacity: 1;
+        transform: translateZ(0);
+        clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+    }
+    1% {
+        clip-path: polygon(0 84.67%, 100% 84.67%, 100% 100%, 0 100%);
+        transform: translate(-5px);
+    }
+    3% {
+        clip-path: polygon(0 84.67%, 100% 84.67%, 100% 100%, 0 100%);
+        transform: translate(5px);
+    }
+    4% {
+        clip-path: polygon(0 84.67%, 100% 84.67%, 100% 100%, 0 100%);
+        transform: translate(-5px);
     }
     5% {
-     clip-path: polygon(0 78%, 100% 78%, 100% 100%, 0 100%);
-     transform: translate(-10px);
+        clip-path: polygon(0 84.67%, 100% 84.67%, 100% 100%, 0 100%);
+        transform: translate(0);
     }
-    10% {
-     clip-path: polygon(0 54%, 100% 54%, 100% 44%, 0 44%);
-     transform: translate3d(15px, 0, 0);
+    6% {
+        clip-path: polygon(0 57.33%, 100% 57.33%, 100% 62.67%, 0 62.67%);
+        transform: translate3d(35px, 0, 0);
     }
-    15% {
-     clip-path: polygon(0 60%, 100% 60%, 100% 40%, 0 40%);
-     transform: translate3d(-20px, 0, 0);
+    8% {
+        clip-path: polygon(0 57.33%, 100% 57.33%, 100% 62.67%, 0 62.67%);
+        transform: translateZ(0);
     }
-    30% {
-     clip-path: polygon(0 85%, 100% 85%, 100% 40%, 0 40%);
-     transform: translate(0);
+    10.1% {
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+        transform: translate3d(0, 0, 0);
     }
-    40% {
-     clip-path: polygon(0 63%, 100% 63%, 100% 80%, 0 80%);
-     transform: translate(-15px);
+    21% {
+        clip-path: polygon(0 66.67%, 100% 66.67%, 100% 70%, 0 70%);
+        transform: translate3d(5px, 0, 0);
     }
-    50% {
-     clip-path: polygon(0 10%, 100% 10%, 100% 0, 0 0);
-     transform: translate3d(10px, 0, 0);
+    22% {
+        clip-path: polygon(0 66.67%, 100% 66.67%, 100% 70%, 0 70%);
+        transform: translate3d(-9px, 0, 0);
     }
-    60% {
-     opacity: 1;
-     transform: translateZ(0);
-     clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+    24.1% {
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+        transform: translate3d(5px, 0, 0);
+    }
+    28% {
+        clip-path: polygon(0 95%, 100% 95%, 100% 80%, 0 80%);
+        transform: translate3d(5px, 0, 0);
+    }
+    28.1% {
+        clip-path: polygon(0 95%, 100% 95%, 100% 80%, 0 80%);
+        transform: translate3d(-5px, 0, 0);
+    }
+    23.1% {
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    }
+    // 63% {
+    //     clip-path: polygon(0 66.67%, 100% 66.67%, 100% 70%, 0 70%);
+    //     transform: translate3d(5px, 0, 0);
+    // }
+    // 63.1% {
+    //     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    //     opacity: 1;
+    // }
+    52% {
+        clip-path: polygon(0 71%, 100% 71%, 100% 80%, 0 80%);
+        transform: translate(-5px);
+    }
+    45% {
+        clip-path: polygon(0 71%, 100% 71%, 100% 80%, 0 80%);
+        transform: translate(5px);
+    }
+    58% {
+        clip-path: polygon(0 71%, 100% 71%, 100% 80%, 0 80%);
+        transform: translate(-5px);
+    }
+    63.1% {
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+        opacity: 1;
+    }
+    80% {
+        clip-path: polygon(0 57.33%, 100% 57.33%, 100% 62.67%, 0 62.67%);
+        transform: translateZ(0);
+    }
+    80.1% {
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+        transform: translate3d(5px, 0, 0);
+    }
+    83% {
+        clip-path: polygon(0 66.67%, 100% 66.67%, 100% 70%, 0 70%);
+        transform: translate3d(5px, 0, 0);
+    }
+    83.1% {
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+        opacity: 1;
     }
     to {
-     opacity: 1;
-     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+        opacity: 1;
     }
- }
- 
+}
+
+
+
+
 
 
 .button {
@@ -237,4 +301,78 @@ body {
         }
     }
    
+}
+
+.title-hal {
+    position: relative;
+    z-index: 3;
+    font-family: var(--font4);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 50%;
+    text-align: center;
+
+    &__text {
+        display: block;
+        // background: linear-gradient(180deg, #1b4cfa 65%, #f5a1fc 110%);
+        background: linear-gradient(180deg, #1b4cfa 0%, #f5a1fc 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    &__double {
+        display: block;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+        top: rem(0);
+        left: rem(0);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 4px 4px  #e32e9b, 0 4px 4px  rgba(63, 108, 255, 1);
+        text-shadow: 0 vw(4) vw(4) #e32e9b, 0 vw(4) vw(4) rgba(63, 108, 255, 0.8);
+        @media(max-width:1024px){
+            text-shadow: 0 vw(4, 768) vw(4, 768) #e32e9b, 0 vw(4, 768) vw(4, 768) rgba(63, 108, 255, 0.8);
+        }
+        @media(max-width:480px){
+            text-shadow: 0 vw(2, 360) vw(2, 360) #e32e9b, 0 vw(2, 360) vw(2, 360) rgba(63, 108, 255, 0.8);
+        }
+    }
+}
+
+.title-bul {
+    position: relative;
+    z-index: 3;
+    font-family: var(--third-family);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 80%;
+    text-align: center;
+
+	&__text {
+        background: linear-gradient(180deg, #1b4cfa 0%, #f5a1fc 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+	}
+
+	&__double {
+        display: block;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+        top: -3%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: vw(3) vw(4) vw(4) #e32e9b, 0 vw(4) vw(4) rgba(63, 108, 255, 0.8);
+        @media(max-width:1024px){
+            text-shadow: vw(3, 768) vw(4, 768) vw(4, 768) #e32e9b, 0 vw(4, 768) vw(4, 768) rgba(63, 108, 255, 0.8);
+        }
+        @media(max-width:480px){
+            text-shadow: vw(1, 360) vw(2, 360) vw(2, 360) #e32e9b, 0 vw(2, 360) vw(2, 360) rgba(63, 108, 255, 0.8);
+        }
+	}
 }

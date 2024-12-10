@@ -1,6 +1,7 @@
 <?php 
 // ОТПРАВКА НА ПОЧТУ
 // ==================================================================================================================
+
 // Файлы phpmailer
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
@@ -13,45 +14,51 @@ $body = "
 <b>Имя:</b> $name<br>
 <b>Телефон:</b> $phone<br>
 ";
+
 // Настройки PHPMailer
 $mail = new PHPMailer\PHPMailer\PHPMailer();
 try {
     $mail->isSMTP();   
     $mail->CharSet = "UTF-8";
     $mail->SMTPAuth   = true;
-    //$mail->SMTPDebug = 2;
+    //$mail->SMTPDebug = 2; // Раскомментируйте эту строку для отладки
     $mail->Debugoutput = function($str, $level) {$GLOBALS['status'][] = $str;};
 
-    $mail->Host       = 'smtp.mail.ru'; 
-    $mail->Username   = 'web-prog-dn@mail.ru'; 
-    // 
-    $mail->Password   = '6W1EU4RUb7ptcmCvtHCQ';
-    $mail->SMTPSecure = 'ssl';
+    // Настройки вашего SMTP-сервера
+    $mail->Host       = 'mail.hosting.reg.ru';
+    $mail->Username   = 'test@digicorn.io';
+    $mail->Password   = 'hC3hW7cO2daM5bZ';
+    $mail->SMTPSecure = 'ssl'; // Используйте 'ssl' для порта 465
     $mail->Port       = 465;
-    $mail->setFrom('web-prog-dn@mail.ru', 'GILDIA'); 
+    $mail->setFrom('test@digicorn.io', 'GILDIA');
+
     // Получатель письма
     $mail->addAddress('danikoktysyk@gmail.com');  
 
-// Отправка сообщения
-$mail->isHTML(true);
-$mail->Subject = $title;
-$mail->Body = $body;    
+    // Отправка сообщения
+    $mail->isHTML(true);
+    $mail->Subject = $title;
+    $mail->Body = $body;    
 
-// Проверяем отравленность сообщения
-if ($mail->send()) {$result = "success";} 
-else {$result = "error";}
+    // Проверяем отравленность сообщения
+    if ($mail->send()) {
+        $result = "success";
+    } else {
+        $result = "error";
+    }
 
 } catch (Exception $e) {
     $result = "error";
     $status = "Сообщение не было отправлено. Причина ошибки: {$mail->ErrorInfo}";
 }
 
-
-
 // Отображение результата
-echo json_encode(["result" => $result, "resultfile" => $rfile, "status" => $status]);
+echo json_encode(["result" => $result, "resultfile" => $rfile ?? null, "status" => $status ?? null]);
 
-if ($sendToTelegram) {$result = "success";} 
-else {$result = "error";}
+if ($sendToTelegram) {
+    $result = "success";
+} else {
+    $result = "error";
+}
 
 ?>
